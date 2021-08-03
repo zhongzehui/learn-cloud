@@ -1,0 +1,28 @@
+server:
+  port: 8051
+  servlet:
+    context-path: /order
+
+#配置rabbitmq服务
+spring:
+  rabbitmq:
+    host: 192.168.60.129
+    username: admin
+    password: admin
+    virtual-host: /
+    port: 5672
+#    开启消息发送确认机制
+    publisher-confirm-type: correlated
+    publisher-returns: true
+#    开启消息发送确认机制
+
+  profiles:
+    include: dbinfo
+
+
+
+#      connectionFactory.setHost("192.168.60.129");
+#      connectionFactory.setPort(5672);
+#      connectionFactory.setUsername("admin");
+#      connectionFactory.setPassword("admin");
+#      connectionFactory.setVirtualHost("/");

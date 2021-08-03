@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.jeff.send.mapper.SendMapper">
+
+    <insert id="addSendVO" parameterType="SendVO" useGeneratedKeys="true" keyProperty="id">
+        insert into t_send ( id, order_content, send_content, ts)
+        values ( #{id },  #{order_content},  #{send_content},  #{ts}  )
+    </insert>
+
+
+</mapper>

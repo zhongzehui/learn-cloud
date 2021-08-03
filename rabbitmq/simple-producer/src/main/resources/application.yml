@@ -1,0 +1,19 @@
+server:
+  port: 8040
+  servlet:
+    context-path: /rbmq
+
+
+#配置rabbitmq服务
+spring:
+  rabbitmq:
+    host: 192.168.60.129
+    username: admin
+    password: admin
+    virtual-host: /
+    port: 5672
+#      connectionFactory.setHost("192.168.60.129");
+#      connectionFactory.setPort(5672);
+#      connectionFactory.setUsername("admin");
+#      connectionFactory.setPassword("admin");
+#      connectionFactory.setVirtualHost("/");

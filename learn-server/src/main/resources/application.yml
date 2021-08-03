@@ -1,0 +1,51 @@
+server:
+  port: 8085
+##当前应用名字
+#  dubbo.application.name=provider-server
+#  #注册中心地址
+#  dubbo.registry.address=zookeeper://127.0.0.1:2181
+#  #扫描指定包下服务
+
+dubbo:
+  application:
+    name: provider-server
+  protocol:
+    name: dubbo
+    port: 10086
+  #服务扫描包的路径
+  scan:
+    base-packages: com.zehui.order.service.impl
+  ## Dubbo Registry
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+#  dubbo.scan.base-packages=com.kuang.provider.service
+
+
+
+# Dubbo Application
+## The default value of dubbo.application.name is ${spring.application.name}
+spring:
+  application:
+    name: provider-server
+  redis:
+    port: 49153
+    host: 192.168.60.129
+    connect-timeout: 5000
+    client-type: lettuce
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 8000
+        max-idle: 8
+        min-idle: 0
+      shutdown-timeout: 100
+#    url:
+#    username:
+#    password:
+
+## dubbo.application.name=${spring.application.name}s
+
+
+#配置redis

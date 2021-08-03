@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: baselearn
+server:
+  port: 8011

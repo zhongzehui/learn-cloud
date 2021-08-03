@@ -1,0 +1,43 @@
+server:
+  port: 8041
+  servlet:
+    context-path: /rbmq
+
+
+#配置rabbitmq服务
+spring:
+  rabbitmq:
+    host: 192.168.60.129
+    username: admin
+    password: admin
+    virtual-host: /
+    port: 5672
+    listener:
+      type: simple
+      #      这个是啥意思呢？ 容器类型？ 默认是simple
+      simple:
+        # 设置为手动ack
+        acknowledge-mode: manual
+        default-requeue-rejected: true
+        retry:
+#          重试的间隔时间
+          initial-interval: 5000
+          enabled: true
+#          重试次数
+          max-attempts: 5
+
+
+
+
+#
+#  第一种类型，SIMPLE 对应 SimpleMessageListenerContainer 消息监听器容器。它一共有两类线程：
+#
+#  Consumer 线程，负责从 RabbitMQ Broker 获取 Queue 中的消息，存储到内存中的 BlockingQueue 阻塞队列中。
+#  Listener 线程，负责从内存中的 BlockingQueue 获取消息，进行消费逻辑。
+#  注意，每一个 Consumer 线程，对应一个 RabbitMQ Consumer ，对应一个 Listener 线程。也就是说，它们三者是一一对应的。
+#
+#  ② 第二种类型，DIRECT 对应 DirectMessageListenerContainer 消息监听器容器。它只有一类线程，即做 SIMPLE 的 Consumer 线程的工作，也做 SIMPLE 的 Listener 线程工作。
+#
+#  注意，因为只有一类线程，所以它要么正在获取消息，要么正在消费消息，也就是串行的。
+#
+#  🔥默认情况下，Spring-AMQP 选择使用第一种类型，即 SIMPLE 容器类型。

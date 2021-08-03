@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>learn-cloud</artifactId>
+        <groupId>com.zehui</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>elasticsearch</artifactId>
+    <version>1.0</version>
+    <modules>
+        <module>base</module>
+        <module>es-jd</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <properties>
+        <mysql.version>8.0.22</mysql.version>
+        <druid.version>1.2.4</druid.version>
+        <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
+        <log4j.version>1.2.17</log4j.version>
+        <!--  版本需要一致，虽然是向上兼容的，还是一致比较好-->
+        <elasticsearch.version>7.13.2</elasticsearch.version>
+        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring boot dependencies-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--还是要从里面复制出来改才生效-->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${elasticsearch.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <!--spring cloud dependencies-->
+            <!--     <dependency>
+                     <groupId>org.springframework.cloud</groupId>
+                     <artifactId>spring-cloud-dependencies</artifactId>
+                     <version>Hoxton.SR11</version>
+                     <type>pom</type>
+                     <scope>import</scope>
+                 </dependency>
+                 -->
+            <!-- 数据库依赖的版本-->
+            <!-- <dependency>
+                 <groupId>mysql</groupId>
+                 <artifactId>mysql-connector-java</artifactId>
+                 <version>${mysql.version}</version>
+             </dependency>
+             <dependency>
+                 <groupId>com.alibaba</groupId>
+                 <artifactId>druid</artifactId>
+                 <version>${druid.version}</version>
+             </dependency>
+             <dependency>
+                 <groupId>com.alibaba</groupId>
+                 <artifactId>druid-spring-boot-starter</artifactId>
+                 <version>${druid.version}</version>
+             </dependency>
+
+             <dependency>
+                 <groupId>org.mybatis.spring.boot</groupId>
+                 <artifactId>mybatis-spring-boot-starter</artifactId>
+                 <version>${mybatis.spring.boot.version}</version>
+             </dependency>
+
+             <dependency>
+                 <groupId>log4j</groupId>
+                 <artifactId>log4j</artifactId>
+                 <version>${log4j.version}</version>
+             </dependency>
+ -->
+        </dependencies>
+    </dependencyManagement>
+
+</project>
